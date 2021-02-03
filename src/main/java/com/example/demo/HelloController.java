@@ -1,6 +1,9 @@
 package com.example.demo;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +24,14 @@ public class HelloController {
                 data = data.concat(myReader.nextLine());
             }
             myReader.close();
-            return data;
+
+            List<String> chapters = new ArrayList(Arrays.asList(data.split("\\*\\*\\*")));
+            chapters.remove(0);
+
+            int idxRandomChapter = 0 + (int) (Math.random() * chapters.size());
+
+            return chapters.get(idxRandomChapter);
+
         } catch (Exception e) {
             e.printStackTrace();
             return "failure";
