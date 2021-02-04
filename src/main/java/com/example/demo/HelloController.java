@@ -28,9 +28,16 @@ public class HelloController {
             List<String> chapters = new ArrayList(Arrays.asList(data.split("\\*\\*\\*")));
             chapters.remove(0);
 
-            int idxRandomChapter = 0 + (int) (Math.random() * chapters.size());
+            int idxRandomChapter = (int) (Math.random() * chapters.size());
 
-            return chapters.get(idxRandomChapter);
+            String randomChapter = chapters.get(idxRandomChapter);
+
+            List<String> questions = new ArrayList(Arrays.asList(randomChapter.split("-")));
+            questions.remove(0);
+            questions.remove(0); // remove the title
+
+            int idxRandomQuestion = (int) (Math.random() * questions.size());
+            return questions.get(idxRandomQuestion);
 
         } catch (Exception e) {
             e.printStackTrace();
