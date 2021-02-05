@@ -37,6 +37,7 @@ public class HelloController {
             questions.remove(0); // remove the title
 
             int idxRandomQuestion = (int) (Math.random() * questions.size());
+
             return questions.get(idxRandomQuestion);
 
         } catch (Exception e) {
