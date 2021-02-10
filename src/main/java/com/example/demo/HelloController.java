@@ -38,6 +38,9 @@ public class HelloController {
 
             int idxRandomQuestion = (int) (Math.random() * questions.size());
 
+            SQL db =  new SQL();
+            db.initSQLServer();
+
             return questions.get(idxRandomQuestion);
 
         } catch (Exception e) {
