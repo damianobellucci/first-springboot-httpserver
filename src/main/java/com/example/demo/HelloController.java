@@ -41,6 +41,8 @@ public class HelloController {
             SQL db =  new SQL();
             db.initSQLServer();
 
+            db.statement.executeUpdate("INSERT INTO chapters(name) VALUES('capitolo di prova da java');");
+
             return questions.get(idxRandomQuestion);
 
         } catch (Exception e) {
