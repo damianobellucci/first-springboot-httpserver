@@ -6,14 +6,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloController {
 
-    @RequestMapping("/")
-    public String index() {
+    @RequestMapping(
+            value = "/",
+            method = RequestMethod.POST,
+            consumes = "application/json",
+            produces = "application/json"
+    )
+    public String index(@RequestBody Form form) {
         try {
             File file = new File(
                     "C:\\Users\\Damiano\\Google Drive\\coding\\first-springboot-httpserver\\src\\main\\java\\com\\example\\demo\\data.txt");
@@ -38,7 +42,7 @@ public class HelloController {
 
             int idxRandomQuestion = (int) (Math.random() * questions.size());
 
-            SQL db =  new SQL();
+            SQL db = new SQL();
             db.initSQLServer();
 
             db.statement.executeUpdate("INSERT INTO chapters(name) VALUES('capitolo di prova da java');");
@@ -51,3 +55,4 @@ public class HelloController {
         }
     }
 }
+
