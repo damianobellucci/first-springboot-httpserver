@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloController {
-
+    @CrossOrigin(origins = "http://localhost:3000") //endpoint accessibile solo dal frontend
     @RequestMapping(
             value = "/",
             method = RequestMethod.POST,
@@ -46,7 +46,7 @@ public class HelloController {
             db.initSQLServer();
 
             db.statement.executeUpdate("INSERT INTO chapters(name) VALUES('capitolo di prova da java');");
-
+            System.out.println(form.chapter);
             return questions.get(idxRandomQuestion);
 
         } catch (Exception e) {
